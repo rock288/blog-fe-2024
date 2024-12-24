@@ -7,7 +7,7 @@ import { PropsWithChildren } from "react"
 const links = [
   {
     href: "/",
-    name: "Home",
+    name: "Blog",
   },
   {
     href: "/about-me",
@@ -18,8 +18,8 @@ const links = [
 function LinkUI(props: PropsWithChildren<LinkProps> & { active: boolean }) {
   return (
     <Link
-      className={`underline font-bold ${
-        props.active ? "no-underline text-green-600" : ""
+      className={` ${
+        props.active ? "underline text-green-500 font-bold" : "no-underline"
       }`}
       {...props}
     />
