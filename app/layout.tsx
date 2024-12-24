@@ -1,17 +1,11 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
-import "./globals.css"
-import { Layout } from "@/components/layout"
 import { ThemeProvider } from "@/components/theme-provider"
+import "./globals.css"
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 800 900",
-})
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
+const nunito = localFont({
+  src: "./fonts/Nunito/Nunito-VariableFont_wght.ttf",
+  variable: "--font-nunito",
   weight: "100 800 900",
 })
 
@@ -27,16 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${nunito.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <Layout>{children}</Layout>
+          {children}
         </ThemeProvider>
       </body>
     </html>
