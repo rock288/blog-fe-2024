@@ -1,4 +1,4 @@
-import { Layout } from "@/components/layout"
+import { Layout } from "@/components/common/layout"
 
 export default function AboutMe() {
   return (
