@@ -18,9 +18,7 @@ const links = [
 function LinkUI(props: PropsWithChildren<LinkProps> & { active: boolean }) {
   return (
     <Link
-      className={` ${
-        props.active ? "underline text-green-500 font-bold" : "no-underline"
-      }`}
+      className={`underline ${props.active ? " text-green-500 font-bold" : ""}`}
       {...props}
     />
   )

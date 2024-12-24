@@ -4,7 +4,7 @@ import { ArticleType } from "./type"
 
 const articles: ArticleType[] = [
   {
-    createdAt: "2024-12-20",
+    createdAt: "2024-12-23",
     title: "ezpkg.io/conveyz: Understanding the Implementation of FConvey",
     href: "/abc",
     tags: [
@@ -15,7 +15,7 @@ const articles: ArticleType[] = [
     ],
   },
   {
-    createdAt: "2024-12-20",
+    createdAt: "2024-12-22",
     title: "ezpkg.io/conveyz: Understanding the Implementation of FConvey",
     href: "/abc",
     tags: [
