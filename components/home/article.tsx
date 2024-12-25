@@ -14,7 +14,11 @@ export function Article(props: Props) {
         <div className="text-gray-400 font-bold text-xs">{createdAt}</div>
         <div>
           {tags.map((item, index) => (
-            <Badge key={index} variant={"secondary"} className="text-slate-700">
+            <Badge
+              key={index}
+              variant={"secondary"}
+              className="text-slate-700 dark:text-slate-100"
+            >
               {item.name}
             </Badge>
           ))}
