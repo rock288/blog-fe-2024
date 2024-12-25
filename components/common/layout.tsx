@@ -1,5 +1,4 @@
 import { Header } from "./header"
-import { Menu } from "./menu"
 
 export function Layout({
   children,
@@ -9,7 +8,6 @@ export function Layout({
   return (
     <div className="container mx-auto max-w-prose">
       <Header />
-      <Menu />
       {children}
     </div>
   )
