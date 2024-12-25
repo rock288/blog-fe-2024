@@ -8,7 +8,7 @@ export function MyInfo() {
       <div className="flex justify-between">
         <div className="flex gap-2">
           <Avatar className="w-20 h-20">
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarImage src="/images/avatar.jpeg" alt="@rock288" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
