@@ -3,7 +3,7 @@ import { ArticleType } from "./type"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 
-interface Props extends ArticleType {}
+type Props = ArticleType
 
 export function Article(props: Props) {
   const { createdAt, title, href, tags } = props

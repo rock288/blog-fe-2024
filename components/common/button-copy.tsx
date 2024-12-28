@@ -1,4 +1,3 @@
-import { FaRegCopy } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 import { BaseProps } from "@/types/common"
 import { PiCheck, PiClipboard } from "react-icons/pi"

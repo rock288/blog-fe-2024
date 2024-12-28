@@ -38,10 +38,6 @@ const articles: ArticleType[] = [
   },
 ]
 
-interface Props {}
-
-export function Articles(props: Props) {
-  const {} = props
-
+export function Articles() {
   return articles.map((item, index) => <Article key={index} {...item} />)
 }

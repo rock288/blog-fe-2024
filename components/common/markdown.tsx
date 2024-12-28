@@ -29,14 +29,14 @@ const LinkRenderer = (props: any) => {
 const ImageRenderer = (props: any) => {
   const [src] = useState(props.src)
 
-  return <img id={props.id} src={src} />
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img id={props.id} src={src} alt="z" />
 }
 
 const Markdown = React.memo(({ className, prefix, children }: Props) => {
   return (
     <ReactMarkdown
       className={`${className ?? ""} prose max-w-full`}
-      children={children}
       remarkPlugins={[remarkGfm, remarkBreaks]}
       remarkRehypeOptions={{ clobberPrefix: prefix }}
       components={{
@@ -62,10 +62,11 @@ const Markdown = React.memo(({ className, prefix, children }: Props) => {
                     />
                   </div>
                   <SyntaxHighlighter
-                    children={codeText}
                     style={vscDarkPlus}
                     language={isCodeBlock ? language : "plaintext"}
-                  />
+                  >
+                    {codeText}
+                  </SyntaxHighlighter>
                 </>
               ) : (
                 <span className="bg-aws-squid-ink/10 border-aws-squid-ink/30 inline rounded-md border px-1 py-0.5">
@@ -76,8 +77,12 @@ const Markdown = React.memo(({ className, prefix, children }: Props) => {
           )
         },
       }}
-    />
+    >
+      {children}
+    </ReactMarkdown>
   )
 })
+
+Markdown.displayName = "markdown"
 
 export default Markdown
