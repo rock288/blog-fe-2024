@@ -1,3 +1,5 @@
+"use client"
+
 import { BaseProps } from "@/types/common"
 import React, { useState } from "react"
 import { default as ReactMarkdown } from "react-markdown"
