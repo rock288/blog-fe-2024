@@ -1,43 +1,12 @@
 import React from "react"
 import { Article } from "./article"
 import { ArticleType } from "./type"
+import { getAllArticle } from "@/services/articles"
 
-const articles: ArticleType[] = [
-  {
-    createdAt: "2024-12-23",
-    title: "ezpkg.io/conveyz: Understanding the Implementation of FConvey",
-    href: "/abc",
-    tags: [
-      {
-        name: "React",
-        id: "1",
-      },
-    ],
-  },
-  {
-    createdAt: "2024-12-22",
-    title: "ezpkg.io/conveyz: Understanding the Implementation of FConvey",
-    href: "/abc",
-    tags: [
-      {
-        name: "React",
-        id: "1",
-      },
-    ],
-  },
-  {
-    createdAt: "2024-12-20",
-    title: "ezpkg.io/conveyz: Understanding the Implementation of FConvey",
-    href: "/abc",
-    tags: [
-      {
-        name: "React",
-        id: "1",
-      },
-    ],
-  },
-]
+export async function Articles() {
+  const posts = await getAllArticle()
 
-export function Articles() {
+  const articles: ArticleType[] = posts?.results ?? []
+
   return articles.map((item, index) => <Article key={index} {...item} />)
 }
