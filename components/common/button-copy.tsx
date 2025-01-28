@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import { BaseProps } from "@/types/common"
 import { PiCheck, PiClipboard } from "react-icons/pi"
 import copy from "copy-to-clipboard"
@@ -21,12 +20,15 @@ export function ButtonCopy(props: Props) {
   }, [])
 
   return (
-    <Button
+    <button
+      className="flex gap-1 items-center select-none py-1"
+      aria-label="Sao chép"
       onClick={() => {
         copyMessage(props.text)
       }}
     >
       {showsCheck ? <PiCheck /> : <PiClipboard />}
-    </Button>
+      {showsCheck ? "Đã sao chép" : "Sao chép"}
+    </button>
   )
 }

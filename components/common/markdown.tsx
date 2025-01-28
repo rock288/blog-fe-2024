@@ -8,6 +8,8 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"
 import remarkBreaks from "remark-breaks"
 import remarkGfm from "remark-gfm"
 import { ButtonCopy } from "./button-copy"
+import "./markdown.css"
+import "./markdown_1.css"
 
 type Props = BaseProps & {
   children: string
@@ -38,7 +40,9 @@ const ImageRenderer = (props: any) => {
 const Markdown = React.memo(({ className, prefix, children }: Props) => {
   return (
     <ReactMarkdown
-      className={`${className ?? ""} prose max-w-full`}
+      className={`${
+        className ?? ""
+      } markdown prose w-full break-words dark:prose-invert dark`}
       remarkPlugins={[remarkGfm, remarkBreaks]}
       remarkRehypeOptions={{ clobberPrefix: prefix }}
       components={{
@@ -56,12 +60,20 @@ const Markdown = React.memo(({ className, prefix, children }: Props) => {
             <>
               {isCodeBlock ? (
                 <>
-                  <div className="flex">
-                    <span className="flex-auto">{language} </span>
-                    <ButtonCopy
-                      className="mr-2 justify-end text-gray-400"
-                      text={codeText} // クリップボードにコピーする対象として、SyntaxHighlighter に渡すソースコード部分を指定
-                    />
+                  <div className="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary dark:bg-gray-950">
+                    <div className="flex items-center text-token-text-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md h-9 bg-token-sidebar-surface-primary dark:bg-token-main-surface-secondary select-none">
+                      {language}
+                    </div>
+
+                    <div className="sticky top-9 md:top-[5.75rem]">
+                      <div className="absolute bottom-0 right-2 flex h-9 items-center">
+                        <div className="flex items-center rounded bg-token-sidebar-surface-primary px-2 font-sans text-xs text-token-text-secondary dark:bg-token-main-surface-secondary">
+                          <span className="" data-state="closed">
+                            <ButtonCopy text={codeText} />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <SyntaxHighlighter
                     style={vscDarkPlus}

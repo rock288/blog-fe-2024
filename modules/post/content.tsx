@@ -9,7 +9,11 @@ type Props = {
 function Content(props: Props) {
   const { content } = props
 
-  return <Markdown>{content}</Markdown>
+  return (
+    <div dir="ltr">
+      <Markdown>{content}</Markdown>
+    </div>
+  )
 }
 
 export default Content
