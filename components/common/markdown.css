@@ -2219,7 +2219,7 @@ html {
   --border-heavy: hsla(0, 0%, 100%, 0.2);
   --border-xheavy: hsla(0, 0%, 100%, 0.25);
   --border-sharp: hsla(0, 0%, 100%, 0.05);
-  --main-surface-primary: var(--gray-800);
+  --main-surface-primary: hsl(240 10% 3.9%);
   --main-surface-primary-inverse: var(--white);
   --main-surface-secondary: var(--gray-750);
   --main-surface-secondary-selected: hsla(0, 0%, 100%, 0.15);

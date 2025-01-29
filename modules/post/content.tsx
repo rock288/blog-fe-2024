@@ -1,10 +1,4 @@
-"use client"
-
-import dynamic from "next/dynamic"
-
-const Markdown = dynamic(() => import("@/components/common/markdown"), {
-  ssr: false,
-})
+import Markdown from "@/components/common/markdown"
 
 type Props = {
   content: string
@@ -14,7 +8,7 @@ function Content(props: Props) {
   const { content } = props
 
   return (
-    <div dir="ltr">
+    <div dir="ltr" className="mt-8">
       <Markdown>{content}</Markdown>
     </div>
   )

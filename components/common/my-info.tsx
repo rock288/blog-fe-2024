@@ -1,5 +1,6 @@
 import Link from "next/link"
 import TypingEffect from "./typing-effect"
+import { ModeToggle } from "./mode-toggle"
 
 export function MyInfo() {
   return (
@@ -11,7 +12,7 @@ export function MyInfo() {
             <TypingEffect text="I'm Rock288!" speed={100} />
           </Link>
         </div>
-        {/* <ModeToggle /> */}
+        <ModeToggle />
       </div>
     </section>
   )

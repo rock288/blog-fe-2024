@@ -9,7 +9,6 @@ import remarkBreaks from "remark-breaks"
 import remarkGfm from "remark-gfm"
 import { ButtonCopy } from "./button-copy"
 import "./markdown.css"
-import "./markdown_1.css"
 
 type Props = BaseProps & {
   children: string
@@ -42,7 +41,7 @@ const Markdown = React.memo(({ className, prefix, children }: Props) => {
     <ReactMarkdown
       className={`${
         className ?? ""
-      } markdown prose w-full break-words dark:prose-invert dark`}
+      } markdown prose w-full break-words dark:prose dark`}
       remarkPlugins={[remarkGfm, remarkBreaks]}
       remarkRehypeOptions={{ clobberPrefix: prefix }}
       components={{
@@ -59,7 +58,7 @@ const Markdown = React.memo(({ className, prefix, children }: Props) => {
           return (
             <>
               {isCodeBlock ? (
-                <div className="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary dark:bg-gray-950">
+                <div className="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary dark:bg-gray-950 mb-4">
                   <div className="contain-inline-size border-token-border-medium relative bg-token-sidebar-surface-primary dark:bg-gray-950">
                     <div className="flex items-center text-token-text-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md h-9 bg-token-sidebar-surface-primary dark:bg-token-main-surface-secondary select-none">
                       {language}
