@@ -59,8 +59,8 @@ const Markdown = React.memo(({ className, prefix, children }: Props) => {
           return (
             <>
               {isCodeBlock ? (
-                <>
-                  <div className="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary dark:bg-gray-950">
+                <div className="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary dark:bg-gray-950">
+                  <div className="contain-inline-size border-token-border-medium relative bg-token-sidebar-surface-primary dark:bg-gray-950">
                     <div className="flex items-center text-token-text-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md h-9 bg-token-sidebar-surface-primary dark:bg-token-main-surface-secondary select-none">
                       {language}
                     </div>
@@ -75,13 +75,15 @@ const Markdown = React.memo(({ className, prefix, children }: Props) => {
                       </div>
                     </div>
                   </div>
-                  <SyntaxHighlighter
-                    style={vscDarkPlus}
-                    language={isCodeBlock ? language : "plaintext"}
-                  >
-                    {codeText}
-                  </SyntaxHighlighter>
-                </>
+                  <div className="">
+                    <SyntaxHighlighter
+                      style={vscDarkPlus}
+                      language={isCodeBlock ? language : "plaintext"}
+                    >
+                      {codeText}
+                    </SyntaxHighlighter>
+                  </div>
+                </div>
               ) : (
                 <span className="bg-aws-squid-ink/10 border-aws-squid-ink/30 inline rounded-md border px-1 py-0.5">
                   {codeText}

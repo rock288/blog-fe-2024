@@ -69,25 +69,25 @@
     transition: none;
   }
 }
-@supports (100cqw) {
+@supports (width: 100cqw) {
   .sidebar-open._screenComposer_1gwvy_27 {
     grid-template-columns:
       [sidebar-start] 280px [sidebar-end thread-start] minmax(
-        min(var(--screen-thread_min-width), 100cqw),
+        min(var(--screen-thread_min-width, 200px), 100cqw),
         1fr
       )
       [thread-end thread-extended-info-start] minmax(
         0,
-        var(--screen-thread-extended-info_width, auto)
+        var(--screen-thread-extended-info_width, max-content)
       )
       [thread-extended-info-end details-start] minmax(
         0,
-        var(--screen-details_width, auto)
+        var(--screen-details_width, max-content)
       )
       [details-end debugger-start] minmax(0, min-content) [debugger-end];
   }
 }
-@supports not (100cqw) {
+@supports not (width: 100cqw) {
   .sidebar-open._screenComposer_1gwvy_27 {
     grid-template-columns:
       [sidebar-start] 280px [sidebar-end thread-start] minmax(
@@ -2565,7 +2565,7 @@ textarea:focus {
 }
 .prose :where(pre):not(:where([class~="not-prose"] *)) {
   background-color: transparent;
-  border-radius: 0.375rem;
+  /* border-radius: 0.375rem; */
   color: currentColor;
   font-size: 0.875em;
   font-weight: 400;
@@ -19523,7 +19523,15 @@ pre[class*="language-"] {
 #intercom-container {
   display: none;
 }
-
+/* ndltuan */
 pre pre {
   margin: 0 !important;
+}
+
+pre .dark\:bg-gray-950:is(.dark *) {
+  background-color: inherit;
+}
+
+.markdown pre {
+  background-color: inherit !important;
 }
