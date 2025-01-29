@@ -19523,3 +19523,7 @@ pre[class*="language-"] {
 #intercom-container {
   display: none;
 }
+
+pre pre {
+  margin: 0 !important;
+}

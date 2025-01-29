@@ -1,6 +1,10 @@
 "use client"
 
-import Markdown from "@/components/common/markdown"
+import dynamic from "next/dynamic"
+
+const Markdown = dynamic(() => import("@/components/common/markdown"), {
+  ssr: false,
+})
 
 type Props = {
   content: string
