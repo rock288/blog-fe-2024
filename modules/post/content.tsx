@@ -8,8 +8,10 @@ function Content(props: Props) {
   const { content } = props
 
   return (
-    <div dir="ltr" className="mt-8">
-      <Markdown>{content}</Markdown>
+    <div>
+      <div dir="ltr">
+        <Markdown>{content}</Markdown>
+      </div>
     </div>
   )
 }

@@ -1,44 +1,56 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 
 interface TypingEffectProps {
   text: string
-  speed?: number // Tốc độ gõ chữ (ms)
+  speed?: number
 }
 
 const TypingEffect: React.FC<TypingEffectProps> = ({ text, speed = 150 }) => {
   const [displayedText, setDisplayedText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
+  const indexRef = useRef(0)
 
   useEffect(() => {
-    let index = 0
+    setDisplayedText("")
+    setIsTyping(true)
+    indexRef.current = 0
 
     const interval = setInterval(() => {
-      if (index < text.length) {
-        setDisplayedText((prev) => prev + (text[index] ?? ""))
-        index++
+      if (indexRef.current < text.length) {
+        setDisplayedText((prev) => {
+          return prev + text[indexRef.current]
+        })
       } else {
         setIsTyping(false)
         clearInterval(interval)
       }
     }, speed)
 
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(interval)
+    }
   }, [text, speed])
+
+  useEffect(() => {
+    if (displayedText) {
+      indexRef.current += 1
+    }
+  }, [displayedText])
 
   return (
     <div className="text-2xl font-extrabold">
       {displayedText}
-      {isTyping ? (
+      {isTyping && (
         <motion.span
           animate={{ opacity: [0, 1] }}
           transition={{ repeat: Infinity, duration: 0.8 }}
         >
           {"|"}
         </motion.span>
-      ) : null}
+      )}
     </div>
   )
 }
