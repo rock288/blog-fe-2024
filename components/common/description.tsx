@@ -7,8 +7,8 @@ export function Description() {
       className="pb-8 p-2 dark:text-white text-slate-600"
     >
       I&apos;m a software engineer working mostly in JavaScript and Go. I keep a
-      development log for some of the project I&apos;m working on and writing
-      about what I learned everyday{" "}
+      development log for some of the projects I&apos;m working on and write
+      about what I learn every day.{" "}
       <span>
         Connect with me on{" "}
         <a
