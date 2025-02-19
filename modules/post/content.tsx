@@ -8,7 +8,7 @@ function Content(props: Props) {
   const { content } = props
 
   return (
-    <div>
+    <div className="p-2">
       <div dir="ltr">
         <Markdown>{content}</Markdown>
       </div>

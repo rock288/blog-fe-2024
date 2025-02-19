@@ -9,10 +9,10 @@ const links = [
     href: "/",
     name: "Blog",
   },
-  {
-    href: "/about-me",
-    name: "About me",
-  },
+  // {
+  //   href: "/about-me",
+  //   name: "About me",
+  // },
 ]
 
 function LinkUI(props: PropsWithChildren<LinkProps> & { active: boolean }) {

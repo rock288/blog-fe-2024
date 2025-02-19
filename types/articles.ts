@@ -5,6 +5,12 @@ export type Article = {
   title: string
   href: string
   content: string
-  user: string
+  user: User
   category: Category
+  createdAt: string
+}
+
+export type User = {
+  id: string
+  name: string
 }
