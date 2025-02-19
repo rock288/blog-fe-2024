@@ -4,11 +4,11 @@ export function Description() {
   return (
     <section
       data-tile="info blog"
-      className="pt-4 p-2 dark:text-white text-slate-600"
+      className="pb-8 p-2 dark:text-white text-slate-600"
     >
-      I&apos;m a software engineer working mostly in JavaScript. I enjoy
-      learning and striving to become a better version of myself each day. Here,
-      I write about what I learn every day while also improving my English.{" "}
+      I&apos;m a software engineer working mostly in JavaScript and Go. I keep a
+      development log for some of the project I&apos;m working on and writing
+      about what I learned everyday{" "}
       <span>
         Connect with me on{" "}
         <a

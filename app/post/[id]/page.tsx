@@ -11,7 +11,6 @@ export default async function Page({
 }) {
   const { id } = await params
   const article = await getArticleByHref(id)
-  console.log(article)
 
   if (!article) {
     return notFound()
