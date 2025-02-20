@@ -12,7 +12,7 @@ type Props = {
 export async function Post({ article }: Props) {
   return (
     <Layout>
-      <Title article={article} />
+      {/* <Title article={article} /> */}
       <Description article={article} />
       <Content content={article.content} />
     </Layout>
