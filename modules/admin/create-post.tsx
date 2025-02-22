@@ -14,27 +14,28 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { createArticle } from "@/services/articles"
-import { useEffect, useState } from "react"
-import { fetchCategories } from "@/services/categories"
-import { Category } from "@/types/category"
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { USER_ID } from "@/configs"
+import { Textarea } from "@/components/ui/textarea"
+import { URL_API, USER_ID } from "@/configs"
+import { createArticle } from "@/services/articles"
+import { fetchCategories } from "@/services/categories"
+import { Category } from "@/types/category"
+import { useEffect, useState } from "react"
 
 const FormSchema = z.object({
   title: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
   content: z.string().min(2, {
+    message: "Username must be at least 2 characters.",
+  }),
+  description: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
   image: z.string().optional(),
@@ -49,18 +50,22 @@ export function CreatePost() {
     defaultValues: {
       title: "",
       content: "",
+      description: "",
       image: "",
     },
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    const article = await createArticle({ ...data, user: USER_ID })
-    console.log(article)
+    try {
+      const article = await createArticle({ ...data, user: USER_ID })
+      window.open(`${location.origin}/post/${article.href}`)
+    } catch (e: any) {
+      console.log(e)
+    }
   }
 
   const getCategories = async () => {
     const temp = await fetchCategories()
-    console.log(temp)
     setCategories(temp)
   }
 
@@ -118,6 +123,20 @@ export function CreatePost() {
               <FormLabel>Content</FormLabel>
               <FormControl>
                 <Textarea className="h-96" placeholder="content" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Description</FormLabel>
+              <FormControl>
+                <Input placeholder="description" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

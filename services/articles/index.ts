@@ -25,5 +25,5 @@ export async function createArticle(body: CreateArticleType) {
   })
 
   const article = await data.json()
-  return article
+  return article.data
 }
