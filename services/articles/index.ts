@@ -9,9 +9,7 @@ export async function getAllArticle() {
 }
 
 export async function getArticleByHref(href: string) {
-  const data = await fetch(`${URL_API}v1/article/href/${href}`, {
-    cache: "force-cache",
-  })
+  const data = await fetch(`${URL_API}v1/article/href/${href}`)
   const posts = await data.json()
   return posts?.data
 }

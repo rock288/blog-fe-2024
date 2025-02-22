@@ -3,6 +3,40 @@ import { Post } from "@/modules/post/post"
 
 import { notFound } from "next/navigation"
 import { getArticleByHref } from "@/services/articles"
+import { Article } from "@/types/articles"
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const { id } = await params
+  const post: Article = await getArticleByHref(id)
+
+  return {
+    title: post.title,
+    description: post.title,
+    keywords: post?.category?.name,
+    creator: post?.user?.name,
+    icons: [
+      {
+        url: post.image,
+      },
+    ],
+    openGraph: {
+      type: "website",
+      url: "https://rock288.com",
+      title: post.title,
+      description: post.title,
+      siteName: "rock288.com",
+      images: [
+        {
+          url: `posts/${post.image}`,
+        },
+      ],
+    },
+  }
+}
 
 export default async function Page({
   params,
