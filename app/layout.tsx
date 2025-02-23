@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   creator: "rock288",
   icons: [
     {
-      url: "/favicon.png",
+      url: `${URL_HOST}/favicon.png`,
     },
   ],
   openGraph: {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "rock288.com",
     images: [
       {
-        url: "/favicon.png",
+        url: `${URL_HOST}/favicon.png`,
       },
     ],
   },

@@ -21,7 +21,7 @@ export async function generateMetadata({
     creator: post?.user?.name,
     icons: [
       {
-        url: post.image,
+        url: `${URL_HOST}/favicon.png`,
       },
     ],
     openGraph: {
