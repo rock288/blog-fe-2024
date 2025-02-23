@@ -6,7 +6,7 @@ export function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="prose mx-auto max-w-prose">
+    <div className="prose mx-auto max-w-prose pb-16">
       <Header />
       {children}
     </div>
