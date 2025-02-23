@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import localFont from "next/font/local"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
+import { URL_HOST } from "@/configs"
 
 const nunito = localFont({
   src: "./fonts/Nunito/Nunito-VariableFont_wght.ttf",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    url: "https://rock288.com",
+    url: URL_HOST,
     title: "rock288.com",
     description: "A software maker working mostly in JavaScript and Go.",
     siteName: "rock288.com",

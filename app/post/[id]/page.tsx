@@ -4,6 +4,7 @@ import { Post } from "@/modules/post/post"
 import { notFound } from "next/navigation"
 import { getArticleByHref } from "@/services/articles"
 import { Article } from "@/types/articles"
+import { URL_HOST } from "@/configs"
 
 export async function generateMetadata({
   params,
@@ -25,13 +26,13 @@ export async function generateMetadata({
     ],
     openGraph: {
       type: "website",
-      url: "https://rock288.com",
+      url: URL_HOST,
       title: post.title,
-      description: post.title,
+      description: post.description,
       siteName: "rock288.com",
       images: [
         {
-          url: `posts/${post.image}`,
+          url: `${URL_HOST}/posts/${post.image}`,
         },
       ],
     },

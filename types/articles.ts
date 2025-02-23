@@ -3,6 +3,7 @@ import { Category } from "./category"
 export type Article = {
   id: string
   title: string
+  description: string
   href: string
   content: string
   image: string
