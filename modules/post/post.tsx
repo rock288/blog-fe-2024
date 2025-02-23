@@ -11,7 +11,7 @@ type Props = {
 
 export async function Post({ article }: Props) {
   return (
-    <Layout>
+    <Layout site="blog">
       {/* <Title article={article} /> */}
       <Description article={article} />
       <Content content={article.content} />

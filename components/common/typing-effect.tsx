@@ -48,7 +48,7 @@ const TypingEffect: React.FC<TypingEffectProps> = ({ text, speed = 150 }) => {
           animate={{ opacity: [0, 1] }}
           transition={{ repeat: Infinity, duration: 0.8 }}
         >
-          {"|"}
+          {"_"}
         </motion.span>
       )}
     </div>

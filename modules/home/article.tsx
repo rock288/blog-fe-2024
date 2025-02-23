@@ -28,7 +28,7 @@ export function Article(props: Props) {
         </div>
       </div>
       <Link
-        href={`post/${href}`}
+        href={`/blog/post/${href}`}
         className="underline underline-offset-1 decoration-slate-300 dark:text-white text-slate-600 dark:hover:text-green-500  dark:hover:decoration-green-500"
       >
         {title}

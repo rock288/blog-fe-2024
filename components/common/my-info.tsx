@@ -3,7 +3,11 @@ import { Separator } from "@/components/ui/separator"
 import TypingEffect from "./typing-effect"
 // import { ModeToggle } from "./mode-toggle"
 
-export function MyInfo() {
+type Props = {
+  site?: string
+}
+
+export function MyInfo({ site }: Props) {
   return (
     <section data-title="avatar" className="flex-1">
       <div className="flex justify-between">
@@ -12,7 +16,7 @@ export function MyInfo() {
             {/* <h1 className="text-2xl">I&apos;m Rock288</h1> */}
             <div className="flex text-2xl font-extrabold">
               <span>rock288.com/</span>
-              <TypingEffect text="blog" speed={100} />
+              {site ? <TypingEffect text={site} speed={100} /> : null}
             </div>
           </Link>
         </div>
