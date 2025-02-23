@@ -33,6 +33,9 @@ export async function generateMetadata({
       images: [
         {
           url: `${URL_HOST}/posts/${post.image}`,
+          width: 500,
+          height: 250,
+          alt: post.description,
         },
       ],
     },

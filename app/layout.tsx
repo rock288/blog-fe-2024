@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: `${URL_HOST}/favicon.png`,
+        width: 500,
+        height: 250,
+        alt: "rock288 blog",
       },
     ],
   },
