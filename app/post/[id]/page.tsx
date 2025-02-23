@@ -26,7 +26,7 @@ export async function generateMetadata({
     ],
     openGraph: {
       type: "website",
-      url: URL_HOST,
+      url: `${URL_HOST}/post/${post.href}`,
       title: post.title,
       description: post.description,
       siteName: "rock288.com",
