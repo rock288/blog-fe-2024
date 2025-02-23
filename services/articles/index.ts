@@ -3,7 +3,9 @@ import { CreateArticleType } from "@/types/articles"
 import { LocalStorageClass } from "@/utils/localstorage"
 
 export async function getAllArticle() {
-  const data = await fetch(`${URL_API}v1/article?limit=20&page=1`)
+  const data = await fetch(`${URL_API}v1/article?limit=20&page=1`, {
+    next: { revalidate: 60 }, // refresh after 60 second
+  })
   const posts = await data.json()
   return posts?.data
 }
