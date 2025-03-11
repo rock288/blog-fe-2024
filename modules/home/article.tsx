@@ -1,13 +1,12 @@
 import React from "react"
 import { ArticleType } from "./type"
 import Link from "next/link"
-import { Badge } from "@/components/ui/badge"
 import { formatDate } from "@/utils/date.helper"
 
 type Props = ArticleType
 
 export function Article(props: Props) {
-  const { createdAt, title, href, tags } = props
+  const { createdAt, title, href, category } = props
 
   return (
     <section data-title="article" className="flex flex-col p-2 mb-2">
@@ -15,17 +14,8 @@ export function Article(props: Props) {
         <div className="text-gray-400 font-bold text-xs">
           {formatDate(createdAt)}
         </div>
-        <div>
-          {(tags ?? []).map((item, index) => (
-            <Badge
-              key={index}
-              variant={"secondary"}
-              className="text-slate-700 dark:text-slate-100"
-            >
-              {item.name}
-            </Badge>
-          ))}
-        </div>
+        <div className="text-gray-400 font-bold text-sm">{" · "}</div>
+        <div className="text-gray-400 font-bold text-sm">{category?.name}</div>
       </div>
       <Link
         href={`/blog/post/${href}`}

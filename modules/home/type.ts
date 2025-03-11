@@ -3,6 +3,12 @@ export type ArticleType = {
   title: string
   href: string
   tags: Tags[]
+  category: Category
+}
+
+export type Category = {
+  name: string
+  id: string
 }
 
 export type Tags = {
