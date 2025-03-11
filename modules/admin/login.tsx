@@ -14,10 +14,12 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { userLogin } from "@/services/user"
 import { LocalStorageClass } from "@/utils/localstorage"
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { CreatePost } from "./create-post"
+import Posts from "./posts"
 
 const FormSchema = z.object({
   email: z.string().min(2, {
@@ -29,7 +31,7 @@ const FormSchema = z.object({
 })
 
 export function Login() {
-  const router = useRouter()
+  const [currentToken, setCurrentToken] = useState("")
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -40,16 +42,26 @@ export function Login() {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const res = await userLogin(data)
+    setCurrentToken(res.tokens.access.token)
     LocalStorageClass.setItem("token", res.tokens.access.token)
-    router.push("/admin/create-post")
   }
 
-  useEffect(() => {
-    const token = LocalStorageClass.getItem("token")
-    if (token) {
-      router.push("/admin/create-post")
-    }
-  }, [router])
+  if (currentToken) {
+    return (
+      <Tabs defaultValue="create-post" className="w-full">
+        <TabsList>
+          <TabsTrigger value="create-post">Create Post</TabsTrigger>
+          <TabsTrigger value="list">List</TabsTrigger>
+        </TabsList>
+        <TabsContent value="create-post">
+          <CreatePost />
+        </TabsContent>
+        <TabsContent value="list">
+          <Posts />
+        </TabsContent>
+      </Tabs>
+    )
+  }
 
   return (
     <Form {...form}>

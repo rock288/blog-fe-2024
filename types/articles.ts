@@ -2,6 +2,7 @@ import { Category } from "./category"
 
 export type Article = {
   id: string
+  _id: string
   title: string
   description: string
   href: string

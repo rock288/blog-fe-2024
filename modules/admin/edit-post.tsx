@@ -23,8 +23,9 @@ import {
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { USER_ID } from "@/configs"
-import { createArticle } from "@/services/articles"
+import { editArticle } from "@/services/articles"
 import { fetchCategories } from "@/services/categories"
+import { Article } from "@/types/articles"
 import { Category } from "@/types/category"
 import { useEffect, useState } from "react"
 
@@ -42,22 +43,30 @@ const FormSchema = z.object({
   category: z.string(),
 })
 
-export function CreatePost() {
+type Props = {
+  post: Article
+}
+
+export function EditPost({ post }: Props) {
   const [categories, setCategories] = useState<Category[]>([])
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      title: "",
-      content: "",
-      description: "",
-      image: "",
+      category: post.category.id,
+      title: post.title,
+      content: post.content,
+      description: post.description,
+      image: post.description,
     },
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      const article = await createArticle({ ...data, user: USER_ID })
+      const article = await editArticle(post._id, {
+        ...data,
+        user: USER_ID,
+      })
       window.open(`${location.origin}/post/${article.href}`)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
@@ -158,7 +167,7 @@ export function CreatePost() {
           )}
         />
 
-        <Button type="submit">Create</Button>
+        <Button type="submit">Edit</Button>
       </form>
     </Form>
   )
