@@ -1,5 +1,6 @@
 import localFont from "next/font/local"
 import { ThemeProvider } from "@/components/theme-provider"
+import { GoogleAnalytics } from "@next/third-parties/google"
 import "./globals.css"
 
 const nunito = localFont({
@@ -25,6 +26,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-YLZXSE9JLX" />
     </html>
   )
 }
