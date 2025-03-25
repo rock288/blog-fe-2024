@@ -28,16 +28,18 @@ import { fetchCategories } from "@/services/categories"
 import { Article } from "@/types/articles"
 import { Category } from "@/types/category"
 import { useEffect, useState } from "react"
+import { fetchUploads } from "@/services/upload"
+import { UploadType } from "@/types/upload"
 
 const FormSchema = z.object({
   title: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
   content: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Content must be at least 2 characters.",
   }),
   description: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Description must be at least 2 characters.",
   }),
   image: z.string().optional(),
   category: z.string(),
@@ -49,15 +51,16 @@ type Props = {
 
 export function EditPost({ post }: Props) {
   const [categories, setCategories] = useState<Category[]>([])
+  const [uploads, setUploads] = useState<UploadType[]>([])
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      category: post.category.id,
+      category: post.category?._id,
       title: post.title,
       content: post.content,
       description: post.description,
-      image: post.description,
+      image: post.image,
     },
   })
 
@@ -67,7 +70,7 @@ export function EditPost({ post }: Props) {
         ...data,
         user: USER_ID,
       })
-      window.open(`${location.origin}/post/${article.href}`)
+      window.open(`${location.origin}/blog/post/${article.href}`)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       console.log(e)
@@ -79,8 +82,14 @@ export function EditPost({ post }: Props) {
     setCategories(temp)
   }
 
+  const getUploads = async () => {
+    const temp = await fetchUploads()
+    setUploads(temp)
+  }
+
   useEffect(() => {
     getCategories()
+    getUploads()
   }, [])
 
   return (
@@ -158,10 +167,21 @@ export function EditPost({ post }: Props) {
           name="image"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Image</FormLabel>
-              <FormControl>
-                <Input placeholder="image" {...field} />
-              </FormControl>
+              <FormLabel>category</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="image" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {uploads.map((item, index) => (
+                    <SelectItem key={index} value={item.path}>
+                      {item.path}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
