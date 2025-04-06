@@ -4,7 +4,7 @@ import { Post } from "@/modules/post/post"
 import { notFound } from "next/navigation"
 import { getArticleByHref } from "@/services/articles"
 import { Article } from "@/types/articles"
-import { URL_HOST } from "@/configs"
+import { URL_HOST, URL_API } from "@/configs"
 
 export async function generateMetadata({
   params,
@@ -32,7 +32,7 @@ export async function generateMetadata({
       siteName: "rock288.com",
       images: [
         {
-          url: `${URL_HOST}/${post.image}`,
+          url: `${URL_API}/${post.image}`,
           width: 500,
           height: 250,
           alt: post.description,
