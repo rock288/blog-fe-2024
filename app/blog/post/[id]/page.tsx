@@ -32,7 +32,7 @@ export async function generateMetadata({
       siteName: "rock288.com",
       images: [
         {
-          url: `${URL_API}/${post.image}`,
+          url: `${URL_API}${post.image}`,
           width: 500,
           height: 250,
           alt: post.description,
