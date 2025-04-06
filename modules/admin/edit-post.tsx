@@ -167,7 +167,7 @@ export function EditPost({ post }: Props) {
           name="image"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>category</FormLabel>
+              <FormLabel>Image</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
