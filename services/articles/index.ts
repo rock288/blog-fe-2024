@@ -45,3 +45,16 @@ export async function editArticle(idArticle: string, body: CreateArticleType) {
   const article = await data.json()
   return article.data
 }
+
+export async function deleteArticle(idArticle: string) {
+  const data = await fetch(`${URL_API}v1/article/${idArticle}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${LocalStorageClass.getItem("token")}`,
+    },
+  })
+
+  const res = await data.json()
+  return res.data
+}
