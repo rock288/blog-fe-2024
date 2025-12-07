@@ -27,6 +27,9 @@ import { createArticle } from "@/services/articles"
 import { fetchCategories } from "@/services/categories"
 import { Category } from "@/types/category"
 import { useEffect, useState } from "react"
+import Content from "../post/content"
+import { fetchUploads } from "@/services/upload"
+import { UploadType } from "@/types/upload"
 
 const FormSchema = z.object({
   title: z.string().min(2, {
@@ -44,6 +47,7 @@ const FormSchema = z.object({
 
 export function CreatePost() {
   const [categories, setCategories] = useState<Category[]>([])
+  const [uploads, setUploads] = useState<UploadType[]>([])
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -70,9 +74,17 @@ export function CreatePost() {
     setCategories(temp)
   }
 
+  const getUploads = async () => {
+    const temp = await fetchUploads()
+    setUploads(temp)
+  }
+
   useEffect(() => {
+    getUploads()
     getCategories()
   }, [])
+
+  console.log(form.watch("content"))
 
   return (
     <Form {...form}>
@@ -149,16 +161,30 @@ export function CreatePost() {
           name="image"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Image</FormLabel>
-              <FormControl>
-                <Input placeholder="image" {...field} />
-              </FormControl>
+              <FormLabel>image</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a verified email to display" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {uploads.map((item, index) => (
+                    <SelectItem key={index} value={item.path}>
+                      {item.path}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
         />
 
         <Button type="submit">Create</Button>
+        <h1 className="font-bold">Preview Content</h1>
+
+        <Content content={form.watch("content")} />
       </form>
     </Form>
   )

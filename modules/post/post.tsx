@@ -3,7 +3,6 @@ import { Layout } from "@/components/common/layout"
 import Content from "./content"
 import { Article } from "@/types/articles"
 import Description from "./description"
-import Title from "./title"
 
 type Props = {
   article: Article
