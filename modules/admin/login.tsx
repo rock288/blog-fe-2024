@@ -22,6 +22,8 @@ import { CreatePost } from "./create-post"
 import Posts from "./posts"
 import { CreateCategory } from "./create-category"
 import Categories from "./categories"
+import { CreateUpload } from "./create-upload"
+import Uploads from "./uploads"
 
 const FormSchema = z.object({
   email: z.string().min(2, {
@@ -56,6 +58,8 @@ export function Login() {
           <TabsTrigger value="list">List</TabsTrigger>
           <TabsTrigger value="create-category">Create Category</TabsTrigger>
           <TabsTrigger value="list-category">List Category</TabsTrigger>
+          <TabsTrigger value="create-upload">Create Upload</TabsTrigger>
+          <TabsTrigger value="list-upload">List Upload</TabsTrigger>
         </TabsList>
         <TabsContent value="create-post">
           <CreatePost />
@@ -68,6 +72,12 @@ export function Login() {
         </TabsContent>
         <TabsContent value="list-category">
           <Categories />
+        </TabsContent>
+        <TabsContent value="create-upload">
+          <CreateUpload />
+        </TabsContent>
+        <TabsContent value="list-upload">
+          <Uploads />
         </TabsContent>
       </Tabs>
     )
