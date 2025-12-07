@@ -20,6 +20,8 @@ import { LocalStorageClass } from "@/utils/localstorage"
 import { useState } from "react"
 import { CreatePost } from "./create-post"
 import Posts from "./posts"
+import { CreateCategory } from "./create-category"
+import Categories from "./categories"
 
 const FormSchema = z.object({
   email: z.string().min(2, {
@@ -52,12 +54,20 @@ export function Login() {
         <TabsList>
           <TabsTrigger value="create-post">Create Post</TabsTrigger>
           <TabsTrigger value="list">List</TabsTrigger>
+          <TabsTrigger value="create-category">Create Category</TabsTrigger>
+          <TabsTrigger value="list-category">List Category</TabsTrigger>
         </TabsList>
         <TabsContent value="create-post">
           <CreatePost />
         </TabsContent>
         <TabsContent value="list">
           <Posts />
+        </TabsContent>
+        <TabsContent value="create-category">
+          <CreateCategory />
+        </TabsContent>
+        <TabsContent value="list-category">
+          <Categories />
         </TabsContent>
       </Tabs>
     )
